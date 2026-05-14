@@ -1,0 +1,9 @@
+{
+  "name": "PAWS - Toilet & Aire",
+  "short_name": "PAWS",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#EAF7F2",
+  "theme_color": "#1565C0",
+  "description": "Localisation et notation de la propreté des sanitaires et aires d'autoroute."
+}
