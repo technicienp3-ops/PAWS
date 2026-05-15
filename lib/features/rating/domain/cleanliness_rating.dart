@@ -1,7 +1,7 @@
 enum CleanlinessRating {
-  green('Vert', 'Propre', 3),
-  orange('Orange', 'Acceptable', 2),
-  red('Rouge', 'À éviter', 1);
+  green('Propre', 'Sanitaires propres et agréables', 3),
+  orange('Sale', 'Propreté moyenne ou à améliorer', 2),
+  red('Dégueulasse', 'Très sale ou à éviter', 1);
 
   const CleanlinessRating(this.label, this.description, this.score);
 
