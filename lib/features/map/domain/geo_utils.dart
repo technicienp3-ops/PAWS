@@ -1,6 +1,6 @@
 import 'dart:math';
 
-const nearbyRadiusKm = 50.0;
+const nearbyRadiusKm = 100.0;
 
 class BoundingBox {
   const BoundingBox({
