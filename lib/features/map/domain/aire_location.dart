@@ -1,10 +1,23 @@
 import '../../rating/domain/cleanliness_rating.dart';
 
+enum LocationCategory {
+  toilets('Toilettes'),
+  shop('Boutique'),
+  fuel('Station-service'),
+  charging('Recharge ⚡'),
+  other('Lieu');
+
+  const LocationCategory(this.label);
+
+  final String label;
+}
+
 class AireLocation {
   const AireLocation({
     required this.id,
     required this.name,
     required this.type,
+    required this.category,
     required this.latitude,
     required this.longitude,
     required this.rating,
@@ -16,6 +29,7 @@ class AireLocation {
   final String id;
   final String name;
   final String type;
+  final LocationCategory category;
   final double latitude;
   final double longitude;
   final CleanlinessRating rating;
@@ -28,6 +42,7 @@ class AireLocation {
       id: id,
       name: name,
       type: type,
+      category: category,
       latitude: latitude,
       longitude: longitude,
       rating: rating,
