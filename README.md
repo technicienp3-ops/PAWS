@@ -5,7 +5,8 @@ PAWS est une nouvelle application Flutter pour localiser et noter la propreté d
 ## Fonctionnalités
 
 - Localisation des sanitaires et aires dans un rayon de 100 km autour de la position actuelle.
-- Recherche OpenStreetMap via Overpass sur les tags prioritaires `amenity=toilets`, `amenity=public_bath`, `toilets:public=yes`, ainsi que `highway=rest_area` et `amenity=sanitary_dump_station`.
+- Recherche OpenStreetMap via Overpass sur `amenity=toilets`, `shop=convenience`, `amenity=fuel` et `amenity=charging_station`.
+- Filtres horizontaux `Tous`, `Toilettes`, `Boutiques` et `Recharge ⚡`, avec panneau coulissant de détail et distance exacte.
 - Notes de propreté Vert / Orange / Rouge stockées dans Cloud Firestore.
 - Photos de contribution prêtes à être stockées dans Firebase Storage.
 - Architecture par `features/` avec une séparation claire entre carte et notation.

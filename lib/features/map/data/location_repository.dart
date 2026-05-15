@@ -118,10 +118,9 @@ class LocationRepository {
   }) {
     final filters = <String>[
       '"amenity"="toilets"',
-      '"amenity"="public_bath"',
-      '"toilets:public"="yes"',
-      '"highway"="rest_area"',
-      '"amenity"="sanitary_dump_station"',
+      '"shop"="convenience"',
+      '"amenity"="fuel"',
+      '"amenity"="charging_station"',
     ];
     final elementTypes = ['node', 'way', 'relation'];
 
@@ -156,11 +155,13 @@ class LocationRepository {
 
     final osmType = element['type'] as String? ?? 'element';
     final osmId = element['id'] as num?;
-    final kind = _locationKind(tags);
+    final category = _locationCategory(tags);
+    final kind = _locationKind(category);
     return AireLocation(
       id: 'osm_${osmType}_${osmId ?? '${latitude}_$longitude'}',
       name: tags['name'] as String? ?? kind,
       type: kind,
+      category: category,
       latitude: latitude.toDouble(),
       longitude: longitude.toDouble(),
       rating: CleanlinessRating.orange,
@@ -168,15 +169,24 @@ class LocationRepository {
     );
   }
 
-  String _locationKind(Map<String, dynamic> tags) {
-    if (tags['amenity'] == 'toilets') return 'Sanitaires';
-    if (tags['amenity'] == 'public_bath') return 'Bains publics';
-    if (tags['toilets:public'] == 'yes') return 'Toilettes publiques';
-    if (tags['highway'] == 'rest_area') return 'Aire de repos';
-    if (tags['amenity'] == 'sanitary_dump_station') {
-      return 'Station de vidange sanitaire';
+  LocationCategory _locationCategory(Map<String, dynamic> tags) {
+    if (tags['amenity'] == 'toilets') return LocationCategory.toilets;
+    if (tags['shop'] == 'convenience') return LocationCategory.shop;
+    if (tags['amenity'] == 'fuel') return LocationCategory.fuel;
+    if (tags['amenity'] == 'charging_station') {
+      return LocationCategory.charging;
     }
-    return 'Sanitaires ou aire';
+    return LocationCategory.other;
+  }
+
+  String _locationKind(LocationCategory category) {
+    return switch (category) {
+      LocationCategory.toilets => 'Toilettes',
+      LocationCategory.shop => 'Boutique',
+      LocationCategory.fuel => 'Station-service',
+      LocationCategory.charging => 'Recharge électrique',
+      LocationCategory.other => 'Lieu utile',
+    };
   }
 }
 

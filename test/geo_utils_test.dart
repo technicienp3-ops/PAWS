@@ -38,11 +38,11 @@ void main() {
         'node[\"amenity\"=\"toilets\"](around:100000,45.61,5.21);',
       ),
     );
-    expect(query, contains('way[\"amenity\"=\"public_bath\"]'));
-    expect(query, contains('relation[\"toilets:public\"=\"yes\"]'));
-    expect(query, contains('node[\"highway\"=\"rest_area\"]'));
-    expect(query, contains('way[\"amenity\"=\"sanitary_dump_station\"]'));
-    expect(query, isNot(contains('leisure')));
+    expect(query, contains('way[\"shop\"=\"convenience\"]'));
+    expect(query, contains('relation[\"amenity\"=\"fuel\"]'));
+    expect(query, contains('node[\"amenity\"=\"charging_station\"]'));
+    expect(query, isNot(contains('highway')));
+    expect(query, isNot(contains('sanitary_dump_station')));
     expect(query, contains('out center tags;'));
   });
 
