@@ -323,11 +323,26 @@ class _LocationDot extends StatelessWidget {
         message: location.name,
         child: InkWell(
           onTap: onTap,
-          borderRadius: BorderRadius.circular(20),
-          child: Icon(
-            location.category.icon,
-            color: location.category.color,
-            size: 30,
+          borderRadius: BorderRadius.circular(18),
+          child: Container(
+            width: 38,
+            height: 38,
+            decoration: BoxDecoration(
+              color: location.category.color,
+              borderRadius: BorderRadius.circular(16),
+              boxShadow: [
+                BoxShadow(
+                  color: location.category.color.withOpacity(0.28),
+                  blurRadius: 10,
+                  offset: const Offset(0, 5),
+                ),
+              ],
+            ),
+            child: Icon(
+              location.category.icon,
+              color: Colors.white,
+              size: 22,
+            ),
           ),
         ),
       ),

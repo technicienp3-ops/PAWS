@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key, required this.nextScreen});
@@ -109,6 +110,8 @@ class _SplashAnimation extends StatelessWidget {
                   (1 - _interval(0.76, 0.86)) *
                   math.sin(controller.value * 84) *
                   3.5;
+              final logoOpacity = _interval(0.52, 0.72);
+              final painterOpacity = 1 - _interval(0.58, 0.76);
               final textOpacity = _interval(0.76, 0.92);
 
               return Column(
@@ -120,10 +123,27 @@ class _SplashAnimation extends StatelessWidget {
                       scale: scaleAnimation,
                       child: SizedBox.square(
                         dimension: 230,
-                        child: CustomPaint(
-                          painter: _PawSplashPainter(
-                            progress: controller.value,
-                          ),
+                        child: Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            Opacity(
+                              opacity: painterOpacity,
+                              child: CustomPaint(
+                                size: const Size.square(230),
+                                painter: _PawSplashPainter(
+                                  progress: controller.value,
+                                ),
+                              ),
+                            ),
+                            Opacity(
+                              opacity: logoOpacity,
+                              child: SvgPicture.asset(
+                                'assets/images/paws_logo.svg',
+                                width: 210,
+                                height: 210,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ),

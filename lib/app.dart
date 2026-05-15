@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'features/map/presentation/map_screen.dart';
-import 'features/splash/presentation/splash_screen.dart';
-
 class PawsApp extends StatelessWidget {
-  const PawsApp({super.key});
+  const PawsApp({super.key, required this.home});
+
+  final Widget home;
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +55,7 @@ class PawsApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const SplashScreen(nextScreen: MapScreen()),
+      home: home,
     );
   }
 }
