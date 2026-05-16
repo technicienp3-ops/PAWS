@@ -24,10 +24,10 @@ class _SplashScreenState extends State<SplashScreen>
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 5600),
+      duration: const Duration(milliseconds: 7600),
     )..forward();
 
-    _timer = Timer(const Duration(milliseconds: 5050), () {
+    _timer = Timer(const Duration(milliseconds: 7000), () {
       if (mounted) setState(() => _showNextScreen = true);
     });
   }
@@ -48,7 +48,7 @@ class _SplashScreenState extends State<SplashScreen>
           animation: _controller,
           builder: (context, child) {
             final fadeOut = Curves.easeInOut.transform(
-              ((_controller.value - 0.91) / 0.09).clamp(0.0, 1.0),
+              ((_controller.value - 0.93) / 0.07).clamp(0.0, 1.0),
             );
             return IgnorePointer(
               ignoring: fadeOut > 0.5,
@@ -76,39 +76,40 @@ class _SplashContent extends StatelessWidget {
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: [Color(0xFFE3F2FD), Color(0xFFE8F5E9)],
+            colors: [Color(0xFFF7FAFB), Color(0xFFEAF2F4)],
           ),
         ),
         child: AnimatedBuilder(
           animation: animation,
           builder: (context, _) {
             final assemble = Curves.easeOutBack.transform(
-              (animation.value / 0.46).clamp(0.0, 1.0),
+              (animation.value / 0.30).clamp(0.0, 1.0),
             );
             final logoReveal = Curves.easeInOut.transform(
-              ((animation.value - 0.28) / 0.18).clamp(0.0, 1.0),
+              ((animation.value - 0.18) / 0.14).clamp(0.0, 1.0),
             );
             final finalBadgeReveal = Curves.easeInOutCubic.transform(
-              ((animation.value - 0.60) / 0.18).clamp(0.0, 1.0),
+              ((animation.value - 0.46) / 0.16).clamp(0.0, 1.0),
             );
             final titleReveal = Curves.easeOut.transform(
-              ((animation.value - 0.72) / 0.12).clamp(0.0, 1.0),
+              ((animation.value - 0.56) / 0.10).clamp(0.0, 1.0),
             );
-            final holdPulse = 1 + math.sin(animation.value * math.pi * 6) * 0.012;
+            final holdPulse =
+                1 + math.sin(animation.value * math.pi * 5) * 0.010;
 
             return Center(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   SizedBox(
-                    width: 310,
-                    height: 310,
+                    width: 336,
+                    height: 336,
                     child: Stack(
                       alignment: Alignment.center,
                       children: [
                         _FlyingPiece(
                           progress: assemble,
-                          start: const Offset(-190, -155),
+                          start: const Offset(-210, -170),
                           end: const Offset(-58, -48),
                           size: 72,
                           color: const Color(0xFF1565C0),
@@ -117,7 +118,7 @@ class _SplashContent extends StatelessWidget {
                         ),
                         _FlyingPiece(
                           progress: assemble,
-                          start: const Offset(185, -145),
+                          start: const Offset(205, -155),
                           end: const Offset(58, -45),
                           size: 66,
                           color: const Color(0xFF43A047),
@@ -126,7 +127,7 @@ class _SplashContent extends StatelessWidget {
                         ),
                         _FlyingPiece(
                           progress: assemble,
-                          start: const Offset(-195, 145),
+                          start: const Offset(-210, 150),
                           end: const Offset(-48, 58),
                           size: 62,
                           color: const Color(0xFF1E88E5),
@@ -135,7 +136,7 @@ class _SplashContent extends StatelessWidget {
                         ),
                         _FlyingPiece(
                           progress: assemble,
-                          start: const Offset(185, 160),
+                          start: const Offset(205, 175),
                           end: const Offset(52, 62),
                           size: 60,
                           color: const Color(0xFF66BB6A),
@@ -143,15 +144,15 @@ class _SplashContent extends StatelessWidget {
                           angle: -0.6,
                         ),
                         Transform.scale(
-                          scale: (0.72 + logoReveal * 0.28) * holdPulse,
+                          scale: (0.70 + logoReveal * 0.30) * holdPulse,
                           child: Opacity(
                             opacity: logoReveal * (1 - finalBadgeReveal),
                             child: Container(
-                              width: 206,
-                              height: 206,
+                              width: 214,
+                              height: 214,
                               padding: const EdgeInsets.all(24),
                               decoration: BoxDecoration(
-                                color: Colors.white.withOpacity(0.94),
+                                color: Colors.white.withOpacity(0.95),
                                 borderRadius: BorderRadius.circular(48),
                                 boxShadow: const [
                                   BoxShadow(
@@ -161,18 +162,20 @@ class _SplashContent extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              child: SvgPicture.asset('assets/images/paws_logo.svg'),
+                              child: SvgPicture.asset(
+                                'assets/images/paws_logo.svg',
+                              ),
                             ),
                           ),
                         ),
                         Transform.scale(
-                          scale: (0.76 + finalBadgeReveal * 0.24) * holdPulse,
+                          scale: (0.78 + finalBadgeReveal * 0.22) * holdPulse,
                           child: Opacity(
                             opacity: finalBadgeReveal,
                             child: SvgPicture.asset(
                               'assets/images/paws_final_badge.svg',
-                              width: 286,
-                              height: 286,
+                              width: 316,
+                              height: 316,
                             ),
                           ),
                         ),
