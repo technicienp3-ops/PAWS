@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'features/map/presentation/map_screen.dart';
+import 'features/splash/presentation/splash_screen.dart';
 
 class PawsApp extends StatelessWidget {
   const PawsApp({super.key});
@@ -26,7 +27,7 @@ class PawsApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const MapScreen(),
+      home: const SplashScreen(nextScreen: MapScreen()),
     );
   }
 }
