@@ -1,0 +1,57 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="42%" r="65%">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#EAF2F4"/>
+    </radialGradient>
+    <linearGradient id="metal" x1="116" y1="84" x2="400" y2="426" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F5F8F8"/>
+      <stop offset="0.45" stop-color="#BFC9CA"/>
+      <stop offset="1" stop-color="#F7FAFA"/>
+    </linearGradient>
+    <linearGradient id="dark" x1="120" y1="60" x2="396" y2="442" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#10242D"/>
+      <stop offset="1" stop-color="#4D5C62"/>
+    </linearGradient>
+    <filter id="shadow" x="40" y="40" width="432" height="432" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#0F2530" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+
+  <rect width="512" height="512" rx="42" fill="url(#bg)"/>
+  <g filter="url(#shadow)">
+    <circle cx="256" cy="256" r="192" fill="url(#metal)" stroke="#263840" stroke-width="8"/>
+    <circle cx="256" cy="256" r="154" fill="#EDF2F1" stroke="#263840" stroke-width="7"/>
+
+    <path d="M92 258C92 196 126 140 178 111" stroke="#6F7E82" stroke-width="8" stroke-linecap="round" opacity="0.82"/>
+    <path d="M420 258C420 196 386 140 334 111" stroke="#6F7E82" stroke-width="8" stroke-linecap="round" opacity="0.82"/>
+    <path d="M116 344C139 388 188 420 256 420" stroke="#6F7E82" stroke-width="8" stroke-linecap="round" opacity="0.75"/>
+    <path d="M396 344C373 388 324 420 256 420" stroke="#6F7E82" stroke-width="8" stroke-linecap="round" opacity="0.75"/>
+
+    <text x="256" y="87" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="70" font-weight="900" letter-spacing="8" fill="url(#dark)">PAWS</text>
+    <text x="256" y="435" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="54" font-weight="900" letter-spacing="7" fill="#56676D">TOIL AIR</text>
+
+    <ellipse cx="205" cy="172" rx="31" ry="52" transform="rotate(-25 205 172)" fill="#F7FAFA" stroke="#20333C" stroke-width="8"/>
+    <ellipse cx="256" cy="147" rx="33" ry="56" fill="#F7FAFA" stroke="#20333C" stroke-width="8"/>
+    <ellipse cx="307" cy="172" rx="31" ry="52" transform="rotate(25 307 172)" fill="#F7FAFA" stroke="#20333C" stroke-width="8"/>
+    <ellipse cx="181" cy="242" rx="30" ry="43" transform="rotate(-42 181 242)" fill="#F7FAFA" stroke="#20333C" stroke-width="8"/>
+
+    <path d="M206 284C218 244 256 223 296 239C331 253 354 281 350 314C347 342 318 362 286 353C266 348 249 349 226 358C194 371 167 353 171 323C173 306 185 292 206 284Z" fill="#F7FAFA" stroke="#20333C" stroke-width="8"/>
+    <clipPath id="mapClip">
+      <path d="M211 290C222 255 256 237 292 251C322 263 340 286 337 312C334 334 310 349 283 342C263 337 247 339 228 347C202 359 181 344 184 323C187 307 196 297 211 290Z"/>
+    </clipPath>
+    <g clip-path="url(#mapClip)">
+      <rect x="178" y="239" width="164" height="117" fill="#45535A"/>
+      <path d="M182 282C219 271 253 279 341 254" stroke="#AFC0C5" stroke-width="4"/>
+      <path d="M184 325C223 310 271 315 344 298" stroke="#AFC0C5" stroke-width="4"/>
+      <path d="M206 243C217 280 219 320 213 357" stroke="#AFC0C5" stroke-width="3"/>
+      <path d="M250 240C255 285 252 323 247 358" stroke="#AFC0C5" stroke-width="3"/>
+      <path d="M301 245C290 288 292 318 302 352" stroke="#AFC0C5" stroke-width="3"/>
+      <path d="M190 260L220 247L243 267L225 289L199 287Z" fill="#6DBB6B" opacity="0.85"/>
+      <path d="M270 315L337 299L338 349L281 350Z" fill="#6DBB6B" opacity="0.9"/>
+    </g>
+
+    <path d="M283 288C283 266 301 248 323 248C345 248 363 266 363 288C363 323 323 362 323 362C323 362 283 323 283 288Z" fill="#5FC4EE" stroke="#FFFFFF" stroke-width="7"/>
+    <circle cx="323" cy="288" r="12" fill="#FFFFFF"/>
+  </g>
+</svg>
