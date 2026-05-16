@@ -24,10 +24,10 @@ class _SplashScreenState extends State<SplashScreen>
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 4600),
+      duration: const Duration(milliseconds: 5600),
     )..forward();
 
-    _timer = Timer(const Duration(milliseconds: 4100), () {
+    _timer = Timer(const Duration(milliseconds: 5050), () {
       if (mounted) setState(() => _showNextScreen = true);
     });
   }
@@ -48,7 +48,7 @@ class _SplashScreenState extends State<SplashScreen>
           animation: _controller,
           builder: (context, child) {
             final fadeOut = Curves.easeInOut.transform(
-              ((_controller.value - 0.88) / 0.12).clamp(0.0, 1.0),
+              ((_controller.value - 0.91) / 0.09).clamp(0.0, 1.0),
             );
             return IgnorePointer(
               ignoring: fadeOut > 0.5,
@@ -83,58 +83,61 @@ class _SplashContent extends StatelessWidget {
           animation: animation,
           builder: (context, _) {
             final assemble = Curves.easeOutBack.transform(
-              (animation.value / 0.58).clamp(0.0, 1.0),
+              (animation.value / 0.46).clamp(0.0, 1.0),
             );
             final logoReveal = Curves.easeInOut.transform(
-              ((animation.value - 0.34) / 0.24).clamp(0.0, 1.0),
+              ((animation.value - 0.28) / 0.18).clamp(0.0, 1.0),
+            );
+            final finalBadgeReveal = Curves.easeInOutCubic.transform(
+              ((animation.value - 0.60) / 0.18).clamp(0.0, 1.0),
             );
             final titleReveal = Curves.easeOut.transform(
-              ((animation.value - 0.56) / 0.20).clamp(0.0, 1.0),
+              ((animation.value - 0.72) / 0.12).clamp(0.0, 1.0),
             );
-            final holdPulse = 1 + math.sin(animation.value * math.pi * 8) * 0.018;
+            final holdPulse = 1 + math.sin(animation.value * math.pi * 6) * 0.012;
 
             return Center(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   SizedBox(
-                    width: 270,
-                    height: 270,
+                    width: 310,
+                    height: 310,
                     child: Stack(
                       alignment: Alignment.center,
                       children: [
                         _FlyingPiece(
                           progress: assemble,
-                          start: const Offset(-170, -150),
-                          end: const Offset(-48, -42),
-                          size: 68,
+                          start: const Offset(-190, -155),
+                          end: const Offset(-58, -48),
+                          size: 72,
                           color: const Color(0xFF1565C0),
                           radius: 24,
                           angle: -0.8,
                         ),
                         _FlyingPiece(
                           progress: assemble,
-                          start: const Offset(165, -130),
-                          end: const Offset(52, -38),
-                          size: 62,
+                          start: const Offset(185, -145),
+                          end: const Offset(58, -45),
+                          size: 66,
                           color: const Color(0xFF43A047),
                           radius: 22,
                           angle: 0.7,
                         ),
                         _FlyingPiece(
                           progress: assemble,
-                          start: const Offset(-180, 130),
-                          end: const Offset(-42, 52),
-                          size: 58,
+                          start: const Offset(-195, 145),
+                          end: const Offset(-48, 58),
+                          size: 62,
                           color: const Color(0xFF1E88E5),
                           radius: 20,
                           angle: 0.5,
                         ),
                         _FlyingPiece(
                           progress: assemble,
-                          start: const Offset(170, 150),
-                          end: const Offset(45, 55),
-                          size: 56,
+                          start: const Offset(185, 160),
+                          end: const Offset(52, 62),
+                          size: 60,
                           color: const Color(0xFF66BB6A),
                           radius: 19,
                           angle: -0.6,
@@ -142,7 +145,7 @@ class _SplashContent extends StatelessWidget {
                         Transform.scale(
                           scale: (0.72 + logoReveal * 0.28) * holdPulse,
                           child: Opacity(
-                            opacity: logoReveal,
+                            opacity: logoReveal * (1 - finalBadgeReveal),
                             child: Container(
                               width: 206,
                               height: 206,
@@ -158,9 +161,18 @@ class _SplashContent extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              child: SvgPicture.asset(
-                                'assets/images/paws_logo.svg',
-                              ),
+                              child: SvgPicture.asset('assets/images/paws_logo.svg'),
+                            ),
+                          ),
+                        ),
+                        Transform.scale(
+                          scale: (0.76 + finalBadgeReveal * 0.24) * holdPulse,
+                          child: Opacity(
+                            opacity: finalBadgeReveal,
+                            child: SvgPicture.asset(
+                              'assets/images/paws_final_badge.svg',
+                              width: 286,
+                              height: 286,
                             ),
                           ),
                         ),
@@ -172,27 +184,13 @@ class _SplashContent extends StatelessWidget {
                     opacity: titleReveal,
                     child: Transform.translate(
                       offset: Offset(0, 18 * (1 - titleReveal)),
-                      child: const Column(
-                        children: [
-                          Text(
-                            'PAWS',
-                            style: TextStyle(
-                              color: Color(0xFF12324A),
-                              fontSize: 42,
-                              fontWeight: FontWeight.w900,
-                              letterSpacing: 5,
-                            ),
-                          ),
-                          SizedBox(height: 8),
-                          Text(
-                            'Toilet & Aire',
-                            style: TextStyle(
-                              color: Color(0xFF2E7D32),
-                              fontSize: 18,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                        ],
+                      child: const Text(
+                        'Toilet & Aire',
+                        style: TextStyle(
+                          color: Color(0xFF2E7D32),
+                          fontSize: 18,
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
                     ),
                   ),
