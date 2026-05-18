@@ -24,10 +24,10 @@ class _SplashScreenState extends State<SplashScreen>
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 7600),
+      duration: const Duration(milliseconds: 11000),
     )..forward();
 
-    _timer = Timer(const Duration(milliseconds: 7000), () {
+    _timer = Timer(const Duration(milliseconds: 10300), () {
       if (mounted) setState(() => _showNextScreen = true);
     });
   }
@@ -48,7 +48,7 @@ class _SplashScreenState extends State<SplashScreen>
           animation: _controller,
           builder: (context, child) {
             final fadeOut = Curves.easeInOut.transform(
-              ((_controller.value - 0.93) / 0.07).clamp(0.0, 1.0),
+              ((_controller.value - 0.94) / 0.06).clamp(0.0, 1.0),
             );
             return IgnorePointer(
               ignoring: fadeOut > 0.5,
@@ -83,16 +83,16 @@ class _SplashContent extends StatelessWidget {
           animation: animation,
           builder: (context, _) {
             final assemble = Curves.easeOutBack.transform(
-              (animation.value / 0.30).clamp(0.0, 1.0),
+              (animation.value / 0.22).clamp(0.0, 1.0),
             );
             final logoReveal = Curves.easeInOut.transform(
-              ((animation.value - 0.18) / 0.14).clamp(0.0, 1.0),
+              ((animation.value - 0.14) / 0.12).clamp(0.0, 1.0),
             );
             final finalBadgeReveal = Curves.easeInOutCubic.transform(
-              ((animation.value - 0.46) / 0.16).clamp(0.0, 1.0),
+              ((animation.value - 0.32) / 0.12).clamp(0.0, 1.0),
             );
             final titleReveal = Curves.easeOut.transform(
-              ((animation.value - 0.56) / 0.10).clamp(0.0, 1.0),
+              ((animation.value - 0.42) / 0.08).clamp(0.0, 1.0),
             );
             final holdPulse =
                 1 + math.sin(animation.value * math.pi * 5) * 0.010;
