@@ -172,10 +172,14 @@ class _SplashContent extends StatelessWidget {
                           scale: (0.78 + finalBadgeReveal * 0.22) * holdPulse,
                           child: Opacity(
                             opacity: finalBadgeReveal,
-                            child: SvgPicture.asset(
-                              'assets/images/paws_final_badge.svg',
-                              width: 316,
-                              height: 316,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(36),
+                              child: Image.asset(
+                                'assets/images/paws_final_real.png.png',
+                                width: 316,
+                                height: 316,
+                                fit: BoxFit.contain,
+                              ),
                             ),
                           ),
                         ),
