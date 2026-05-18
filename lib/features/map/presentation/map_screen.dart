@@ -110,7 +110,15 @@ class _HeroMap extends StatelessWidget {
         children: [
           Row(
             children: [
-              SvgPicture.asset('assets/images/paws_logo.svg', height: 72),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(18),
+                child: Image.asset(
+                  'assets/images/paws_final_real.png.png',
+                  height: 72,
+                  width: 72,
+                  fit: BoxFit.contain,
+                ),
+              ),
               const SizedBox(width: 16),
               Expanded(
                 child: Column(
